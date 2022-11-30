@@ -1,5 +1,10 @@
-resource "google_compute_network" "vpc-network-team3" {
-  name                    = "vpc-network-team3" # var.vpc_name
-  auto_create_subnetworks = "false"
-  routing_mode            = "GLOBAL"
-}
+# provider "google" {
+# 	region = var.vpc_config["region"]
+# 	zone = var.vpc_config["zone"]
+# }
+
+# resource "google_compute_network" "vpc" {
+# 	name = "vpc"
+# 	auto_create_subnetworks = "true"
+# 	routing_mode = "GLOBAL"
+# }
