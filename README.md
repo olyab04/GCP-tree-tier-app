@@ -26,6 +26,16 @@ Plan: It is one stage where it determines what needs to be created, updated, or 
 Apply: It is the last stage where it applies the changes of the infrastructure in order to move to the desired state.
 
 
+Enable services to start provisioning environment
+
+!/bin/bash
+gcloud services enable compute.googleapis.com
+gcloud services enable dns.googleapis.com
+gcloud services enable storage-api.googleapis.com
+gcloud services enable container.googleapis.com
+Project was created with a random id.
+
+
 
 
 Create a DB instance with a DB inside it and create a user
