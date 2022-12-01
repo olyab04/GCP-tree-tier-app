@@ -30,10 +30,15 @@ Enable services to start provisioning environment
 
 !/bin/bash
 gcloud services enable compute.googleapis.com
+
 gcloud services enable dns.googleapis.com
+
 gcloud services enable storage-api.googleapis.com
+
 gcloud services enable container.googleapis.com
+
 Project was created with a random id.
+
 
 
 
