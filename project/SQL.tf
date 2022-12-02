@@ -1,26 +1,36 @@
-resource "google_sql_database_instance" "main" {
-  name                = "main-instance"
-  database_version    = "MYSQL_5_7"
+
+resource "google_sql_database_instance" "database" {
+  name                = var.dbinstance_name
+  database_version    = var.data_base_version
+  region              = var.region
+  root_password       = var.db_password
   deletion_protection = "false"
-  region              = "us-central1"
-  project             = "oeyluucehelhmtkb"
+  project             = var.project_name
+
+
+
   settings {
-    # Second-generation instance tiers are based on the machine
-    # type. See argument reference below.
     tier = "db-f1-micro"
-  }
+
+ip_configuration {
+      ipv4_enabled = "true"
+
+    #   authorized_networks {
+    #     value           = var.authorized_networks
+    #     name            = var.db_username
+        
+      }
+    }
 }
-
-
-resource "google_sql_user" "users" {
-  name     = "me"
-  instance = google_sql_database_instance.main.name
-  host     = "me.com"
-  password = "changeme"
-}
-
 
 resource "google_sql_database" "database" {
-  name     = "wordpress"
-  instance = google_sql_database_instance.main.name
+  name     = var.db_name
+  instance = google_sql_database_instance.database.name
+}
+
+resource "google_sql_user" "users" {
+  name     = var.db_username
+  instance = google_sql_database_instance.database.name
+  host     = var.db_host
+  password = var.db_password
 }
